@@ -1,35 +1,38 @@
 """vistas de papeposts"""
 from django.shortcuts import render
-from django.http import HttpResponse
 from datetime import datetime
+
 # Create your views here.
 hora = datetime.now().strftime('%b %d del %Y %H:%M horas')
 posts = [
-	{
-		'name':'Lorena',
-		'user':'warrion_black',
-		'timestamp': hora,
-		'picture':'https://scontent.fscl11-1.fna.fbcdn.net/v/t1.0-9/64460645_2304479666274286_6808865521828626432_n.jpg?_nc_cat=111&_nc_oc=AQmHip7g1lpw2e6ScjmRWnJry_xqJwL8gNcdu9w60b4W6_bDMLmwrIP48_6Q9-UGvSk&_nc_ht=scontent.fscl11-1.fna&oh=7d832501dd67edb8c039353b2db2cd75&oe=5DAB32D1',
-	},
     {
-        'name': 'Via Láctea',
-        'user': 'Mangel_mera',
+        'title': 'viaje a machupichu',
+        'user': {
+            'name': 'Lorena Delgado Cadena',
+            'picture':'https://scontent.fscl11-1.fna.fbcdn.net/v/t1.0-1/c0.12.160.160a/p160x160/65366789_2331563240232595_1786744311107289088_n.jpg?_nc_cat=105&_nc_oc=AQlxrsFRAD_7IOJwnj84NX4axIBi2Po9nS9kFIlWwc5Jb6zifkffMSykjrSC1wrSoPQ&_nc_ht=scontent.fscl11-1.fna&oh=d447e9c5230fddae548da64dd17d70ce&oe=5DAAF38E'
+        },
         'timestamp': hora,
-        'picture': 'https://picsum.photos/200/200/?image=903',
+        'photo': 'https://scontent.fscl11-1.fna.fbcdn.net/v/t1.0-9/64460645_2304479666274286_6808865521828626432_n.jpg?_nc_cat=111&_nc_oc=AQmHip7g1lpw2e6ScjmRWnJry_xqJwL8gNcdu9w60b4W6_bDMLmwrIP48_6Q9-UGvSk&_nc_ht=scontent.fscl11-1.fna&oh=7d832501dd67edb8c039353b2db2cd75&oe=5DAB32D1'
     },
     {
-        'name': 'Nuevo auditorio',
-        'user': 'Thespianartist',
+        'title': 'Via Láctea',
+        'user': {
+            'name': 'Mangel Mera',
+            'picture': 'https://scontent.fscl11-1.fna.fbcdn.net/v/t1.0-1/p160x160/48971463_10218118848665155_393845855343345664_n.jpg?_nc_cat=110&_nc_oc=AQmxI7h4kfjVbHgIFGe2iXKGtmWNo9tJjJauXPtbsoGNC0K0lfnv87UnYKBwRTjit_E&_nc_ht=scontent.fscl11-1.fna&oh=ec0be017c2b1ef6d7f222ed4b88cebd8&oe=5DAB3B82'
+        },
         'timestamp': hora,
-        'picture': 'https://picsum.photos/200/200/?image=1076',
+        'photo': 'https://picsum.photos/800/800/?image=903'
+    },
+    {
+        'title': 'viaje a machupichu',
+        'user': {
+            'name': 'Lorena Delgado Cadena',
+            'picture':'https://scontent.fscl11-1.fna.fbcdn.net/v/t1.0-1/c0.12.160.160a/p160x160/65366789_2331563240232595_1786744311107289088_n.jpg?_nc_cat=105&_nc_oc=AQlxrsFRAD_7IOJwnj84NX4axIBi2Po9nS9kFIlWwc5Jb6zifkffMSykjrSC1wrSoPQ&_nc_ht=scontent.fscl11-1.fna&oh=d447e9c5230fddae548da64dd17d70ce&oe=5DAAF38E'
+        },
+        'timestamp': hora,
+        'photo': 'https://picsum.photos/800/800/?image=903'
     }
 ]
+
 def list_posts(request):
-	content = []
-	for post in posts:
-		content.append("""
-			<p><strong>{name}</strong></p>
-			<p><strong>{user} - <i>{timestamp}</i></strong></p>
-			<figure><img width="20%" height="35%" src="{picture}"/></figure>
-		""".format(**post))
-	return HttpResponse('<br/>'.join(content))
+	return render(request,'feed.html',{'posts': posts})

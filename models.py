@@ -7,21 +7,7 @@
 # Feel free to rename the models, but don't rename db_table values or field names.
 from django.db import models
 
-class User(models.Model):
-	email = models.EmailField(unique=True)
-	password = models.CharField(max_length=100)
 
-	first_name = models.CharField(max_length=100)
-	last_name = models.CharField(max_length=100)
-
-	bio = models.TextField(blank=True)
-
-	birhdate = models.DateField(blank=True, null=True)
-
-	created = models.DateTimeField(auto_now_add=True)
-
-	modified = models.DateTimeField(auto_now=True)
-	
 class AuthGroup(models.Model):
     name = models.CharField(unique=True, max_length=150)
 

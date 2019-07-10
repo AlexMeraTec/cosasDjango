@@ -44,6 +44,7 @@ INSTALLED_APPS = [
 
     # apps locales
     'papeposts',
+    'users',
 ]
 #aplicaciones que estan ligadas al proyecto de django
 MIDDLEWARE = [

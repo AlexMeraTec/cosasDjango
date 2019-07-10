@@ -24,6 +24,6 @@ urlpatterns = [
     path('hello_world/',views.hello_world),
     path('odenados/', views.odenados),
     #path('olla/<str:name>/<int:age>', views.olla)
-#   path('admin/', admin.site.urls),
+    path('admin/', admin.site.urls),
     path('posts/', papeposts_views.list_posts),
 ]

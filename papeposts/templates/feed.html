@@ -10,13 +10,18 @@
     <div class="container">
         <style type="text/css" media="screen">
             .imgu{
-                max-height: 50px;
-                max-width: 50px;
+                max-height: 40px;
+                max-width: 40px;
+            }
+            .mov{
+                width: 100%;
+                max-width: 720px;
             }
         </style>
         <div class="row">
             {% for post in posts %}
-            <div class="col-lg-4 offset-lg-4">
+            <div class="col-lg-3"></div>
+            <div class="col-lg-6">
                 <div class="media">
                     <img class="mr-3 rounded-circle imgu" src="{{ post.user.picture }}" alt="{{ post.user.name }}">
                     <div class="media-body">
@@ -24,11 +29,16 @@
                         {{ post.timestamp }}
                     </div>
                 </div>
-                <img class="img-fluid mt-3 border rounded" src="{{ post.photo }}" alt="{{ post.title }}">
+            </div>
+            <div class="col-lg-3"></div>
+            <center>
+            <div class="mov">
+            <img class="img-fluid mt-3 border rounded imgmov" src="{{ post.photo }}" alt="{{ post.title }}">
                 <br/><br/>
                 <h6 class="ml-1 mt-1">{{ post.title }}</h6>
                 <br/>
             </div>
+            </center>
             {% endfor %}
         </div>
     </div>

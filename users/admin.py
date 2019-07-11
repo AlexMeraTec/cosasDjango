@@ -1,4 +1,7 @@
+from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.contrib import admin
+
+from django.contrib.auth.models import User
 from users.models import Profile
 # Register your models here.
 # 
@@ -30,6 +33,29 @@ class ProfileAdmin(admin.ModelAdmin):
                 ('website', 'phone_number'),
                 ('biography')
             )
+        }),
+        ('Metadata',{
+            'fields': (('created', 'modified'),),   
+         
         })
 	)        
     
+	readonly_fields = ('created','modified','user')
+
+class ProfileInLine(admin.StackedInline):
+	model = Profile
+	can_delete = False
+	verbose_name_plural = 'profiles'
+
+class UserAdmin(BaseUserAdmin):
+	inlines = (ProfileInLine,)
+	list_display = (
+		'username',
+		'email',
+		'first_name',
+		'last_name',
+		'is_active',
+		'is_staff'
+	)
+admin.site.unregister(User)
+admin.site.register(User,UserAdmin)

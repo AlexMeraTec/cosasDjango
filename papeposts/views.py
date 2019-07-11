@@ -1,5 +1,7 @@
 """vistas de papeposts"""
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
+
 from datetime import datetime
 
 # Create your views here.
@@ -35,4 +37,4 @@ posts = [
 ]
 
 def list_posts(request):
-	return render(request,'feed.html',{'posts': posts})
+	return render(request,'posts/feed.html',{'posts': posts})

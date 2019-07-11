@@ -18,13 +18,15 @@ class ProfileCompletionMiddleware:
 
     def __call__(self, request):
         """Code to be executed for each request before the view is called."""
-        #si el usuario esta logueado
+		#si el usuario esta logueado"""
         if not request.user.is_anonymous:
-            #traemos el perfil del usuario
-            profile = request.user.profile
-            #si no tiene biografia o imagen de perfil redirige a aditar perfil
-            if not profile.picture or not profile.biography:
-                if request.path not in [reverse('update_profile'), reverse('logout')]:
-                    return redirect('update_profile')
+            if not request.user.is_staff:
+				#traemos el perfil del usuario
+                profile = request.user.profile
+				#si no tiene biografia o imagen de perfil redirige a aditar perfil
+                if not profile.picture or not profile.biography:
+                    if request.path not in [reverse('update_profile'), reverse('logout')]:
+                        return redirect('update_profile')
+
         response = self.get_response(request)
         return response

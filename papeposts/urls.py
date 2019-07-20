@@ -1,5 +1,5 @@
 from django.urls import path
-
+from django.views.generic import TemplateView
 from papeposts import views
 
 urlpatterns = [
@@ -19,5 +19,10 @@ urlpatterns = [
         route='posts/<int:pk>/',
         view=views.PostDetailView.as_view(),
         name='detail'
+    ),
+	path(
+        route='posts/featured/',
+        view=TemplateView.as_view(template_name ='posts/featured.html'),
+        name='featured'
     )
 ]

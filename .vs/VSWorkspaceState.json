@@ -1,0 +1,14 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\pape",
+    "\\papeposts",
+    "\\static",
+    "\\templates",
+    "\\templates\\posts",
+    "\\templates\\users",
+    "\\users"
+  ],
+  "SelectedNode": "\\pape\\wsgi.py",
+  "PreviewInSolutionExplorer": false
+}

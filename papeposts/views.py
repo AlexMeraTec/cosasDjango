@@ -29,12 +29,6 @@ class PostDetailView(LoginRequiredMixin, DetailView):
     queryset = Post.objects.all()
     context_object_name = 'post'
 
-@login_required
-def list_posts(request):
-	
-	posts = Post.objects.all().order_by('-created')
-
-	return render(request,'posts/feed.html',{'posts': posts})
 
 class CreatePostView(LoginRequiredMixin, CreateView):
     """Create a new post."""
